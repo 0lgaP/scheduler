@@ -7,8 +7,8 @@ export default function DayList(props){
   const parsedDayListItem = days.map(day => <DayListItem 
                                               key={day.id} 
                                               {...day} 
-                                              setDay={()=>props.setDay(day.id)} 
-                                              selected={props.day === day.name} 
+                                              setDay={()=>props.onChange(day.id)} 
+                                              selected={props.value === day.name} 
                                               />)
   return (
     <ul>
