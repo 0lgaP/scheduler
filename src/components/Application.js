@@ -65,7 +65,7 @@ const appointments = [
 export default function Application() {
   const [day, setDay] = useState("Monday");
   const schedule = appointments.map((appointment) => {
-    return <Show key={appointment.id}
+    return <Appointment key={appointment.id}
     {...appointment} />
   })
   
@@ -94,8 +94,8 @@ export default function Application() {
       </section>
       <section className="schedule">
 
-        {schedule}
-      <Appointment key={appointment.id} {...appointment} />
+      {schedule}
+
       </section>
     </main>
   );
