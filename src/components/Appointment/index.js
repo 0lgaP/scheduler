@@ -17,7 +17,6 @@ export default function Appointment(props) {
     <article className="appointment">
       <Header time={props.time}/>
       {renderInterview}
-      
     </article>
   );
 } 
