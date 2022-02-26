@@ -26,7 +26,7 @@ export default function Form(props) {
           className="appointment__create-input text--semi-bold"
           name="name"
           type="text"
-          placeholder={student}
+          placeholder={"Enter Student Name"}
           onChange={(event) => setStudent(event.target.value)}
           // onCancel={cancel}
         />
@@ -34,14 +34,16 @@ export default function Form(props) {
       <InterviewerList 
         interviewers={props.interviewers}
         value={interviewer}
-        // NO!!! onChange={()=> setInterviewer(props.value = props.interviewers.id)}
         onChange={setInterviewer}
       />
     </section>
     <section className="appointment__card-right">
       <section className="appointment__actions">
-        <Button danger onClick={()=>{cancel()}}>Cancel</Button>
-        <Button confirm onClick={() => {props.onSave(student, interviewer)}}>Save</Button>
+      <Button danger onClick={()=>{props.back()}}>Cancel</Button>
+      <Button confirm onClick={() => {props.back()}}>Save</Button>
+
+        {/* <Button danger onClick={()=>{cancel()}}>Cancel</Button>
+        <Button confirm onClick={() => {props.onSave(student, interviewer)}}>Save</Button> */}
       </section>
     </section>
   </main>
