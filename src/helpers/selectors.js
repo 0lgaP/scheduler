@@ -1,67 +1,3 @@
-
-import React from 'react';
-
-/**
- * 
- * @param {{}} state 
- * @param {""} dayName 
- * @returns {Array}
- */
-export function getAppointmentsForDay(state, dayName) {
-  const dayNames = state.days.filter((day) => day.name === dayName )
-  if (!dayNames.length){
-    return [];
-  }
-  const appointmentsArray = dayNames[0].appointments;
-  const resultArray = appointmentsArray.map( appointment => state.appointments[appointment])
-  return resultArray;
-}
-
-/**
- * 
- * @param {{}} state 
- * @param {{}} interview 
- * @returns {{Object}}
- */
-export function getInterview(state, interview){
-  if(!interview) {
-    return null;
-  }
-  const interviewer = state.interviewers[interview.interviewer]
-  return {
-    ...interview,
-    interviewer
-  };
-}
-
-
-/* getAppointmentsForDay(state1, "Monday") RETURNS:
-____________________________________________________________________
-[
-  { id: 1, time: '12pm', interview: null },
-  { id: 2, time: '1pm', interview: null },
-  {
-    id: 3,
-    time: '2pm',
-    interview: { student: 'Archie Cohen', interviewer: 2 }
-  }
-]
-____________________________________________________________________
-*/
-
-/* getInterview(state, state.appointments["3"].interview)) RETURNS 
-____________________________________________________________________ 
-{
-  student: 'Archie Cohen',
-  interviewer: {
-    id: 2,
-    name: 'Tori Malcolm',
-    avatar: 'https://i.imgur.com/Nmx0Qxo.png'
-  }
-}
-____________________________________________________________________
-*/
-
 /* VARIABLES
 const state = {
   days: [
@@ -104,6 +40,86 @@ const state = {
     }
   }
 };
+*/
+
+
+import React from 'react';
+
+/**
+ * 
+ * @param {{}} state 
+ * @param {""} dayName 
+ * @returns {Array}
+ */
+export function getAppointmentsForDay(state, dayName) {
+  const dayNames = state.days.filter((day) => day.name === dayName )  
+  if (!dayNames.length){
+    return [];  
+  }
+  const appointmentsArray = dayNames[0].appointments;
+  const resultArray = appointmentsArray.map( appointment => state.appointments[appointment])
+  return resultArray;
+}
+
+/**
+ * 
+ * @param {{}} state 
+ * @param {{}} interview 
+ * @returns {{Object}}
+ */
+export function getInterview(state, interview){
+  if(!interview) {
+    return null;  
+  }
+  const interviewer = state.interviewers[interview.interviewer]
+  return {
+    ...interview,  
+    interviewer
+  };
+}
+
+export function getInterviewersForDay(state, dayNAME) {
+  const dayName = state.days.filter((day) => day.name === dayNAME )
+  // console.log("DAYNAME",dayName)
+  if (!dayName.length){
+    return [];
+  }  
+  const appointmentsArray = dayName[0].appointments;
+  // console.log("APPOINTMENTSARRAY", appointmentsArray)
+
+  const appointmentDetailsArray = appointmentsArray.filter( appointment => state.appointments[appointment].interview)
+  const uniqueInterviewers = appointmentDetailsArray.map( interviewer => state.appointments[interviewer].interview)
+  const interviewerInfo = uniqueInterviewers.map(interviewer => interviewer.interviewer)
+  const resultArray = interviewerInfo.map(person => state.interviewers[person])
+  return resultArray;
+}  
+
+// console.log(getInterviewersForDay(state, "Monday"))
+/* getAppointmentsForDay(state1, "Monday") RETURNS:
+____________________________________________________________________
+[
+  { id: 1, time: '12pm', interview: null },
+  { id: 2, time: '1pm', interview: null },
+  {
+    id: 3,
+    time: '2pm',
+    interview: { student: 'Archie Cohen', interviewer: 2 }
+  }  
+]  
+____________________________________________________________________
+*/
+
+/* getInterview(state, state.appointments["3"].interview)) RETURNS 
+____________________________________________________________________ 
+{
+  student: 'Archie Cohen',
+  interviewer: {
+    id: 2,
+    name: 'Tori Malcolm',
+    avatar: 'https://i.imgur.com/Nmx0Qxo.png'
+  }  
+}  
+____________________________________________________________________
 */
 
 
