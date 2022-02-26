@@ -37,9 +37,9 @@ export default function Application() {
       axios.get("/api/appointments"),
       axios.get("/api/interviewers")
     ]).then((all)=>{
-      console.log("ALLZERO",all[0])
-      console.log("ALLONE",all[1])
-      console.log("ALLTWO",all[2])
+      // console.log("ALLZERO",all[0])
+      // console.log("ALLONE",all[1])
+      // console.log("ALLTWO",all[2])
       setState(prev => ({
       ...prev,
       days: all[0].data,

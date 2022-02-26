@@ -40,6 +40,29 @@ const state = {
     }
   }
 };
+
+function getInterviewersForDay(state, dayNAME) {
+  const dayName = state.days.filter((day) => day.name === dayNAME )
+  // console.log("DAYNAME",dayName)
+  if (!dayName.length){
+    return [];
+  }  
+  const appointmentsArray = dayName[0].appointments;
+  // console.log("APPOINTMENTSARRAY", appointmentsArray)
+
+  const appointmentDetailsArray = appointmentsArray.filter( appointment => state.appointments[appointment].interview)
+  // console.log("appointmentDetailsArray", appointmentDetailsArray)
+  const uniqueInterviewers = appointmentDetailsArray.map( interviewer => state.appointments[interviewer].interview)
+  // console.log("uniqueInterviewers", uniqueInterviewers)
+  const interviewerInfo = uniqueInterviewers.map(interviewer => interviewer.interviewer)
+    // console.log("interviewerInfo", interviewerInfo)
+  const resultArray = interviewerInfo.map(person => state.interviewers[person])
+  return resultArray;
+}  
+
+// console.log(getInterviewersForDay(state, "Monday"))
+
+
 */
 
 
@@ -80,13 +103,10 @@ export function getInterview(state, interview){
 
 export function getInterviewersForDay(state, dayNAME) {
   const dayName = state.days.filter((day) => day.name === dayNAME )
-  // console.log("DAYNAME",dayName)
   if (!dayName.length){
     return [];
   }  
   const appointmentsArray = dayName[0].appointments;
-  // console.log("APPOINTMENTSARRAY", appointmentsArray)
-
   const appointmentDetailsArray = appointmentsArray.filter( appointment => state.appointments[appointment].interview)
   const uniqueInterviewers = appointmentDetailsArray.map( interviewer => state.appointments[interviewer].interview)
   const interviewerInfo = uniqueInterviewers.map(interviewer => interviewer.interviewer)
@@ -94,7 +114,7 @@ export function getInterviewersForDay(state, dayNAME) {
   return resultArray;
 }  
 
-// console.log(getInterviewersForDay(state, "Monday"))
+
 /* getAppointmentsForDay(state1, "Monday") RETURNS:
 ____________________________________________________________________
 [
