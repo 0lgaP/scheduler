@@ -5,10 +5,12 @@ import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
+import Status from "./Status";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
@@ -21,17 +23,21 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
-    props.bookInterview(id, { ...interview }).then(() => {
+    console.log("Saving?")
+    transition(SAVING);
+    props.bookInterview(id, interview)
+    .then(() => {
       console.log("SOMETHING");
       transition(SHOW);
-    });
+    })
+    .catch((error)=>console.log(error))
 
     // console.log(interview)
   }
   // const renderInterview = (props.interview ?
   // <Show student={props.interview.student}
   //       interviewer={props.interview.interviewer.name}/> : <Empty/>);
-
+  console.log("INTERVIEWRES ARRAY IN INTDEX", props.interviewers)
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -49,6 +55,7 @@ export default function Appointment(props) {
           interviewer={props.interview.interviewer.name}
         />
       )}
+      {mode === SAVING && (<Status message="Saving"/>)}
     </article>
   );
 }

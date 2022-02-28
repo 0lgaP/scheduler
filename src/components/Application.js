@@ -77,6 +77,7 @@ export default function Application() {
 
   const appointmentArray = getAppointmentsForDay(state, state.day)
   const interviewerArray = getInterviewersForDay(state, state.day)
+  console.log("INTERVIEWRES ARRAY", interviewerArray)
 
   const schedule = appointmentArray.map((appointment) => {
     // console.log("APPOINTMENT", appointment)

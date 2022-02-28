@@ -4,15 +4,16 @@ import "components/InterviewerList.scss";
 
 
 export default function InterviewerList(props) {
+console.log("THE PROPS",{...props})
   // const interviewerClass = classNames("interviewers", {
   //   "interviwers__item--selected": props.selected
   // })
   const parsedInterviewerListItem = props.interviewers.map(
-    interview => <InterviewerListItem 
-                  key={interview.id} 
-                  {...interview} 
-                  setInterviewer={()=>props.onChange(interview.id)} 
-                  selected={props.value === interview.id}
+    interviewer => <InterviewerListItem 
+                  key={interviewer.id} 
+                  {...interviewer} 
+                  setInterviewer={()=>props.onChange(interviewer.id)} 
+                  selected={props.value === interviewer.id}
                   />)
   return (
   <section className="interviewers">
