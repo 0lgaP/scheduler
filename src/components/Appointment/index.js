@@ -23,7 +23,8 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    props.bookInterview(id, interview)
+    props.bookInterview(id, {...interview});
+    transition(SHOW);
     // console.log(interview)
   }
   // const renderInterview = (props.interview ? 
