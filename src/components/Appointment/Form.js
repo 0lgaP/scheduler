@@ -13,7 +13,6 @@ export default function Form(props) {
   }
   const cancel = () => {
     reset();
-    //WHY?? how?? what???????????????????
     props.onCancel();
   }
 
@@ -28,7 +27,7 @@ export default function Form(props) {
           type="text"
           placeholder={"Enter Student Name"}
           onChange={(event) => setStudent(event.target.value)}
-          // onCancel={cancel}
+          onCancel={cancel}
         />
       </form>
       <InterviewerList 
@@ -39,11 +38,12 @@ export default function Form(props) {
     </section>
     <section className="appointment__card-right">
       <section className="appointment__actions">
-      <Button danger onClick={()=>{props.back()}}>Cancel</Button>
-      <Button confirm onClick={() => {props.back()}}>Save</Button>
+      <Button danger onClick={()=>{cancel()}}>Cancel</Button>
+      <Button confirm onClick={() => {props.onSave(student, interviewer)}}>Save</Button>
 
         {/* <Button danger onClick={()=>{cancel()}}>Cancel</Button>
         <Button confirm onClick={() => {props.onSave(student, interviewer)}}>Save</Button> */}
+        {/*      <Button confirm onClick={() => {props.back()}}>Save</Button> */}
       </section>
     </section>
   </main>

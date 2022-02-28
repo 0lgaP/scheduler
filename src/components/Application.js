@@ -19,6 +19,11 @@ export default function Application() {
     interviewers: {}
   });
   
+  function bookInterview(id, interview) {
+
+    console.log(id, interview)
+  };
+
   const setDay = day => setState({...state, day});
   // const setDays = days => setState(prev => ({ ...prev, days }));
   //THIS IS REPLACED BY:
@@ -56,7 +61,7 @@ export default function Application() {
 // console.log("DAILY APPS", dailyAppointments)
 
   const appointmentArray = getAppointmentsForDay(state, state.day)
-  // const interviewerArray = getInterviewersForDay(state, state.day)
+  const interviewerArray = getInterviewersForDay(state, state.day)
 
   const schedule = appointmentArray.map((appointment) => {
     // console.log("APPOINTMENT", appointment)
@@ -67,7 +72,8 @@ export default function Application() {
     id={appointment.id}
     time={appointment.time}
     interview={interview}
-    interviewers={getInterviewersForDay(state, state.day)}
+    interviewers={interviewerArray}
+    bookInterview={bookInterview}
     />
     
   })
