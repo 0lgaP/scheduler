@@ -18,8 +18,8 @@ export default function Application() {
     appointments: {},
     interviewers: {}
   });
-  
-  function bookInterview(id, interview) {
+  //async will ensure that this fucntion is considered async by the code
+  async function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -29,7 +29,14 @@ export default function Application() {
       [id]: appointment
     };
     setState( {...state, appointments})
-    console.log(id, interview)
+    //Make the request with the correct endpoint using the appointment id, with the interview data in the body
+      console.log("anythin")
+      axios.put(`/api/appointments/${id}`, { interview })
+      .then((data)=>{console.log("OTTER", data)})
+      .catch((error)=> console.log(error))
+      setState(prev => ({ ...prev, appointments }));
+
+    // console.log(id, interview)
   };
 
   const setDay = day => setState({...state, day});
