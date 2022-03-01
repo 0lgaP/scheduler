@@ -108,11 +108,8 @@ export function getInterviewersForDay(state, dayNAME) {
   if (!dayName.length){
     return [];
   } 
-
     const interviewerArray = dayName[0].interviewers;
-    console.log("Funtion return intarr", interviewerArray)
     const resultArray = interviewerArray.map( interviewer => state.interviewers[interviewer])
-    console.log("Funtion return", resultArray)
     return resultArray;
   }
 
