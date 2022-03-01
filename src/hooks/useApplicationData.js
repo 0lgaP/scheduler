@@ -8,7 +8,7 @@ const [state, setState] = useState({
   days: [],
   appointments: {},
   interviewers: {}
-  //add spots to state?????????????????????????????????????????????
+
 });
 
 //setState day
@@ -44,15 +44,15 @@ async function bookInterview(id, interview) {
   };
 
   // check if booking or editing & resolve accordingly
+  // if "state.appointments[id].interview" exists - we are editing
   if (state.appointments[id].interview){
     return Promise.resolve(axios.put(`/api/appointments/${id}`, { interview }))
   .then(()=> {
-
     setState(prev => ({ ...prev, appointments}))
   }); 
 
   } else {
-    
+  //"state.appointments[id].interview" is null - we are booking
     return Promise.resolve(axios.put(`/api/appointments/${id}`, { interview }))
     .then(()=> {
       const days = updateSpots("book")
