@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useApplicationData (initial) {
@@ -42,14 +42,17 @@ async function bookInterview(id, interview) {
     ...state.appointments,
     [id]: appointment
   };
-  console.log(state.appointments[id].interview)
+
+  // check if booking or editing & resolve accordingly
   if (state.appointments[id].interview){
     return Promise.resolve(axios.put(`/api/appointments/${id}`, { interview }))
   .then(()=> {
 
     setState(prev => ({ ...prev, appointments}))
   }); 
+
   } else {
+    
     return Promise.resolve(axios.put(`/api/appointments/${id}`, { interview }))
     .then(()=> {
       const days = updateSpots("book")
