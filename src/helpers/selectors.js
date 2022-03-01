@@ -75,11 +75,11 @@ import React from 'react';
  */
 
 export function getAppointmentsForDay(state, dayName) {
-  const dayObj = state.days.find((day) => day.name === dayName )  
-  if (!dayObj){
+  const dayNames = state.days.filter((day) => day.name === dayName )  
+  if (!dayNames.length){
     return [];  
   }
-  const appointmentsArray = dayObj.appointments;
+  const appointmentsArray = dayNames[0].appointments;
   const resultArray = appointmentsArray.map( appointment => state.appointments[appointment])
   return resultArray;
 }
@@ -104,15 +104,18 @@ export function getInterview(state, interview){
 }
 
 export function getInterviewersForDay(state, dayNAME) {
-  const dayObj = state.days.find((day) => day.name === dayNAME )
-  if (!dayObj){
+  const dayName = state.days.filter((day) => day.name === dayNAME )
+  if (!dayName.length){
     return [];
   } 
 
-    const interviewersArray = dayObj.interviewers;
-    const resultArray = interviewersArray.map( interviewer => state.interviewers[interviewer])
+    const interviewerArray = dayName[0].interviewers;
+    console.log("Funtion return intarr", interviewerArray)
+    const resultArray = interviewerArray.map( interviewer => state.interviewers[interviewer])
+    console.log("Funtion return", resultArray)
     return resultArray;
   }
+
 
 
 

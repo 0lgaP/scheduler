@@ -15,7 +15,11 @@ const SAVING = "SAVING";
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
-  );
+    );
+    
+    // console.log("PROPS.INTERVIEWRES ", props.interviewers)
+    // console.log("PROPS.INTERVIEW ", props.interview)
+    // console.log("PROPS ", props)
 
   function save(name, interviewer) {
     const id = props.id;
@@ -23,12 +27,11 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
-    console.log("Saving?")
-    transition(SAVING);
     props.bookInterview(id, interview)
     .then(() => {
       console.log("SOMETHING");
-      transition(SHOW);
+      transition(SAVING);
+      setTimeout((()=> transition(SHOW)), 500)
     })
     .catch((error)=>console.log(error))
 
@@ -37,7 +40,6 @@ export default function Appointment(props) {
   // const renderInterview = (props.interview ?
   // <Show student={props.interview.student}
   //       interviewer={props.interview.interviewer.name}/> : <Empty/>);
-  console.log("INTERVIEWRES ARRAY IN INTDEX", props.interviewers)
   return (
     <article className="appointment">
       <Header time={props.time} />
