@@ -24,11 +24,26 @@ export default function Application() {
       ...state.appointments,
       [id]: appointment
     };
-    setState( {...state, appointments})
+    // setState( {...state, appointments})
       axios.put(`/api/appointments/${id}`, { interview })
       .catch((error)=> console.log(error))
       setState(prev => ({ ...prev, appointments }));
   };
+
+  async function cancelInterview(id){
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    axios.delete(`/api/appointments/${id}`)
+    .then(()=>setState({...state, appointments}))
+    .catch(error=>console.log(error))
+    
+  }
 
   const setDay = day => setState({...state, day});
     useEffect(() => {
@@ -61,6 +76,7 @@ export default function Application() {
     interview={interview}
     interviewers={interviewerArray}
     bookInterview={bookInterview}
+    cancelInterview={cancelInterview}
     />
     
   })
