@@ -25,9 +25,10 @@ export default function Application() {
       [id]: appointment
     };
     // setState( {...state, appointments})
-      axios.put(`/api/appointments/${id}`, { interview })
-      .catch((error)=> console.log(error))
-      setState(prev => ({ ...prev, appointments }));
+      return Promise.resolve(axios.put(`/api/appointments/${id}`, { interview }))
+      .then(()=> {
+        setState(prev => ({ ...prev, appointments }))
+      });
   };
 
   async function cancelInterview(id){
@@ -39,9 +40,9 @@ export default function Application() {
       ...state.appointments,
       [id]: appointment
     };
-    axios.delete(`/api/appointments/${id}`)
+    return Promise.resolve(axios.delete(`/api/appointments/${id}`))
     .then(()=>setState({...state, appointments}))
-    .catch(error=>console.log(error))
+
     
   }
 
