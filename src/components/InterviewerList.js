@@ -4,7 +4,7 @@ import "components/InterviewerList.scss";
 
 
 export default function InterviewerList(props) {
-console.log("THE PROPS",{...props})
+
   // const interviewerClass = classNames("interviewers", {
   //   "interviwers__item--selected": props.selected
   // })

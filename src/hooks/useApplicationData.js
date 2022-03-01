@@ -10,29 +10,15 @@ const [state, setState] = useState({
   interviewers: {}
   //add spots to state?????????????????????????????????????????????
 });
-console.log("+++++Stete.days", state.days)
+
 //setState day
 const setDay = day => setState({...state, day});
 
-//Spots function to see how many spots are available
-const countSpots = (state, day) => {
-  const currentDay = state.days.find((dayItem) => dayItem.name === day);
-  const appointmentIds = currentDay.appointments;
-
-  const interviewsForTheDay = appointmentIds.map(
-    (id) => state.appointments[id].interview
-  );
-
-  const emptyInterviewsForTheDay = interviewsForTheDay.filter((interview) => !interview);
-  const spots = emptyInterviewsForTheDay.length;
-
-  return spots;
-};
-
+//updateSpots function to set days state
 const updateSpots = (requestType) => {
   const days = state.days.map(day => {
     if (day.name === state.day){
-      if (requestType === "bookAppointment"){
+      if (requestType === "book"){
         return { ...day, spots: day.spots - 1 }
       } else {
         return { ...day, spots: day.spots + 1 }
@@ -56,12 +42,20 @@ async function bookInterview(id, interview) {
     ...state.appointments,
     [id]: appointment
   };
-  
-  return Promise.resolve(axios.put(`/api/appointments/${id}`, { interview }))
+  console.log(state.appointments[id].interview)
+  if (state.appointments[id].interview){
+    return Promise.resolve(axios.put(`/api/appointments/${id}`, { interview }))
   .then(()=> {
-    const days = updateSpots("bookAppointment")
-    setState(prev => ({ ...prev, appointments, days }))
+
+    setState(prev => ({ ...prev, appointments}))
   }); 
+  } else {
+    return Promise.resolve(axios.put(`/api/appointments/${id}`, { interview }))
+    .then(()=> {
+      const days = updateSpots("book")
+      setState(prev => ({ ...prev, appointments, days }))
+    }); 
+  }
 
 };
 //Cancel interview and axios.delete (update db)
