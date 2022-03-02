@@ -127,6 +127,22 @@ export default function Application() {
 }
 
 
+// some time form now:
+// const [error, setError] = useState("");
+// const validate = () => {
+//   if (name === "null") {
+//     setError("Student name cannot be blank");
+//     return "Student name cannot be blank";
+//   } 
+//   if(!interviewer) {
+//     setError("Interviewer must be selected");
+//     return "Interviewer must be selected";
+//   }
+//   setError("");
+//   props.onSave(name, interviewer)
+
+// }
+
 /* VARIABLES
 const state = {
   days: [
