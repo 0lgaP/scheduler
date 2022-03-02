@@ -108,6 +108,8 @@ describe("Form", () => {
     expect(onCancel).toHaveBeenCalledTimes(1);
   });
 });
+
+// test for does not onSave without interviewer name
 // it("calls onSave function when the name is defined", () => {
 //   const onSave = jest.fn();
 //   const { getByText, queryByText } = render(
