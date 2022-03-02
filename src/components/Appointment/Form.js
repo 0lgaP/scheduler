@@ -46,7 +46,7 @@ export default function Form(props) {
           onChange={(event) => setName(event.target.value)}
           onCancel={cancel}
         />
-        <section className="appointment__validation">{error}</section>
+        <section className="appointment__validation" data-testid="validate">{error}</section>
       </form>
       <InterviewerList 
         interviewers={props.interviewers}
