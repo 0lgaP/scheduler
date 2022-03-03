@@ -4,6 +4,8 @@ import { render, cleanup, fireEvent } from "@testing-library/react";
 
 import Button from "components/Button";
 
+describe("Button", () => {
+
 afterEach(cleanup);
 
 it("renders without crashing", () => {
@@ -56,4 +58,6 @@ it("renders a disabled button", () => {
   fireEvent.click(button);
 
   expect(handleClick).toHaveBeenCalledTimes(0);
+});
+
 });
