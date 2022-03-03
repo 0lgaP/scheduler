@@ -6,7 +6,7 @@ Interview Scheduler is a single-page, React application. This userfriendly app a
 ![Gif of scheduler functionality](https://raw.githubusercontent.com/0lgaP/scheduler/master/public/images/scheduler__.gif)
 ## Setup
 
-[Clone Scheduler](https://github.com/0lgaP/scheduler) 
+[Clone Scheduler](https://github.com/0lgaP/scheduler) <br>
 [Clone Database](https://github.com/0lgaP/scheduler-api) to a sepporate folder *outside* of Scheduler
 Install dependencies in both folders with `npm install`.
 
