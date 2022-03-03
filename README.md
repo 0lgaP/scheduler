@@ -3,7 +3,7 @@ Interview Scheduler is a single-page, React application. This userfriendly app a
 
 ## Add, Edit, Delete and be sure the app is working while you wait
 
-[Gif of scheduler functionality](https://raw.githubusercontent.com/0lgaP/scheduler/master/public/images/scheduler__.gif)
+![Gif of scheduler functionality](https://raw.githubusercontent.com/0lgaP/scheduler/master/public/images/scheduler__.gif)
 ## Setup
 
 [Clone Scheduler](https://github.com/0lgaP/scheduler) 
