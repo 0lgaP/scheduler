@@ -29,16 +29,18 @@ export default function Appointment(props) {
     // console.log("PROPS.INTERVIEW ", props.interview)
     // console.log("PROPS ", props)
 
-  function save(name, interviewer) {
+  function save(name, interviewer){
+
     const id = props.id;
     const interview = {
       student: name,
       interviewer,
     };
+
     transition(SAVING);
+
     Promise.resolve(props.bookInterview(id, interview))
     .then(() => {
-
       transition(SHOW)
     })
     .catch(error => transition(ERROR_SAVE, true))
@@ -53,9 +55,7 @@ export default function Appointment(props) {
     .catch(error => transition(ERROR_DELETE, true))
     
   }
-  // const renderInterview = (props.interview ?
-  // <Show student={props.interview.student}
-  //       interviewer={props.interview.interviewer.name}/> : <Empty/>);
+
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -86,7 +86,6 @@ export default function Appointment(props) {
       )}
       {mode === ERROR_SAVE && (<Error message="Error while saving your changes" onClose={()=>transition(EMPTY)}/>)}
       {mode === ERROR_DELETE && (<Error message="Error while deleting your interview" onClose={()=>transition(SHOW)}/>)}
-
       {mode === SAVING && (<Status message="Saving"/>)}
       {mode === DELETE && (<Status message="Deleting"/>)}
       {mode === CONFIRM && ( <Confirm message="You sure hun?" onConfirm={destroy} onCancel={() => back()}/>)}

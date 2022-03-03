@@ -65,8 +65,3 @@ export default function Form(props) {
   </main>
   );
 }
-// cancel !== cancel()
-
-// cancel() !== ()=>{cancel()}
-// how to pass functions with components
-// if you invoke function without wrapper it will run the function on the render
