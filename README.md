@@ -7,7 +7,7 @@ Interview Scheduler is a single-page, React application. This userfriendly app a
 ## Setup
 
 [Clone Scheduler](https://github.com/0lgaP/scheduler) <br>
-[Clone Database](https://github.com/0lgaP/scheduler-api) to a sepporate folder *outside* of Scheduler
+[Clone Database](https://github.com/0lgaP/scheduler-api) to a sepporate folder *outside* of Scheduler <br>
 Install dependencies in both folders with `npm install`.
 
 ## Running Webpack Development Server
@@ -36,6 +36,16 @@ npm run cypress
 
 ## Reset Database
 
-```sh
 [RESET DATABASE](http://localhost:8001/api/debug/reset)
+
+## Dependencies
+
+```sh
+"axios": "^0.26.0",
+"classnames": "^2.2.6",
+"normalize.css": "^8.0.1",
+"react": "^16.9.0",
+"react-dom": "^16.9.0",
+"react-scripts": "3.0.0",
+"react-test-render": "^1.1.2"
 ```
