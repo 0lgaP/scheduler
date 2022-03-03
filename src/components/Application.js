@@ -20,7 +20,6 @@ export default function Application() {
     time={appointment.time}
     interview={interview}
     interviewers={interviewerArray}
-
     bookInterview={bookInterview}
     cancelInterview={cancelInterview}
     />

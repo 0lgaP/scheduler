@@ -5,10 +5,6 @@ import PropTypes from 'prop-types';
 
 export default function InterviewerList(props) {
 
-  // const interviewerClass = classNames("interviewers", {
-  //   "interviwers__item--selected": props.selected
-  // })
-  
   const parsedInterviewerListItem = props.interviewers.map(
     interviewer => <InterviewerListItem 
                   key={interviewer.id} 

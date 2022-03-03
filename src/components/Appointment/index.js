@@ -1,5 +1,4 @@
 import React from "react";
-// import React, { Fragment } from "react";
 import "components/Appointment/styles.scss";
 import useVisualMode from "hooks/useVisualMode";
 import Header from "./Header";

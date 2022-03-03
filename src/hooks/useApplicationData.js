@@ -30,7 +30,6 @@ const updateSpots = (requestType) => {
   return days
 }
 
-
 //Book interview and axios.put (update db)
 async function bookInterview(id, interview) {
   const appointment = {
@@ -61,6 +60,7 @@ async function bookInterview(id, interview) {
   }
 
 };
+
 //Cancel interview and axios.delete (update db)
 async function cancelInterview(id){
   const appointment = {
@@ -78,10 +78,9 @@ async function cancelInterview(id){
     const days = updateSpots()
     setState({...state, appointments, days})})
 
-  
-  
 }
 
+//request db information and update state
 useEffect(() => {
   
   Promise.all([
@@ -98,6 +97,7 @@ useEffect(() => {
   });
 }, []);
 
+//return all components
   return {state, setDay, bookInterview, cancelInterview}
 
 }

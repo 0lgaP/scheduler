@@ -1,10 +1,8 @@
 import {useState} from 'react';
-// import React, {useState} from 'react';
+
 export default function useVisualMode(firstMode){
   const [mode, setMode] = useState(firstMode);
   const [history, setHistory] = useState([firstMode]); 
-  //const setDay = day => setState({...state, day});
-  // const setDays = days => setState(prev => ({ ...prev, days }));
 
   const transition = (newMode, replace = false) => {
     //set mode to variable
@@ -15,9 +13,9 @@ export default function useVisualMode(firstMode){
     } else {
       setHistory((prev) => [...prev, newMode]);
     }
-    }
+  };
   
-  
+
   const back = () => {
     //set mode to the length of the array 
     //-1 because array starts at 0, 
@@ -26,11 +24,8 @@ export default function useVisualMode(firstMode){
     //slice(start, end)
     //(start at history[0], slice off history[-1])
     setHistory((prev) => [...prev.slice(0, -1)]);
-  }
+  };
 
   return {transition, back, mode};
   
-};
-  
-  
-  
+}
