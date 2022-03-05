@@ -39,7 +39,7 @@ export default function Appointment(props) {
     .then(() => {
       transition(SHOW)
     })
-    .catch(error => {
+    .catch(() => {
       transition(ERROR_SAVE, true);
       
     })
@@ -52,7 +52,7 @@ export default function Appointment(props) {
     
     Promise.resolve(props.cancelInterview(props.id))
     .then(()=> transition(EMPTY))
-    .catch(error => transition(ERROR_DELETE, true))
+    .catch(() => transition(ERROR_DELETE, true))
     
   }
 
