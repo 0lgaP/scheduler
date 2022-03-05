@@ -10,6 +10,7 @@ export function getAppointmentsForDay(state, dayName) {
   if (!dayObj || !dayObj.appointments){
     return [];  
   }
+
   const appointmentsArray = dayObj.appointments;
   const resultArray = appointmentsArray.map( appointment => state.appointments[appointment])
   return resultArray;
