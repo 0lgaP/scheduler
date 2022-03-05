@@ -15,6 +15,11 @@ Install dependencies in both folders with `npm install`.
 ```sh
 npm start
 ```
+## Running Error Emulator Server
+
+```sh
+npm run error
+```
 
 ## Running Jest Test Framework
 
