@@ -17,13 +17,15 @@ export default function useVisualMode(firstMode){
   
 
   const back = () => {
-    //set mode to the length of the array 
-    //-1 because array starts at 0, 
-    //-1 because we want to set it to the previous value in array
-    setMode(history[history.length - 2]);
-    //slice(start, end)
-    //(start at history[0], slice off history[-1])
-    setHistory((prev) => [...prev.slice(0, -1)]);
+    if (history.length > 1) {
+      //set mode to the length of the array 
+      //-1 because array starts at 0, 
+      //-1 because we want to set it to the previous value in array
+      setMode(history[history.length - 2]);
+      //slice(start, end)
+      //(start at history[0], slice off history[-1])
+      setHistory((prev) => [...prev.slice(0, -1)]);
+    }
   };
 
   return {transition, back, mode};

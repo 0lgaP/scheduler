@@ -48,7 +48,8 @@ async function bookInterview(id, interview) {
     return Promise.resolve(axios.put(`/api/appointments/${id}`, { interview }))
   .then(()=> {
     setState(prev => ({ ...prev, appointments}))
-  }); 
+  }) 
+
 
   } else {
   //"state.appointments[id].interview" is null - we are booking
@@ -56,7 +57,7 @@ async function bookInterview(id, interview) {
     .then(()=> {
       const days = updateSpots("book")
       setState(prev => ({ ...prev, appointments, days }))
-    }); 
+    });
   }
 
 };
