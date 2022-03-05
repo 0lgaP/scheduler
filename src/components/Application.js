@@ -3,7 +3,8 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment";  
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
-import useApplicationData from "hooks/useApplicationData";
+// import useApplicationData from "hooks/useApplicationData";
+import useApplicationData from "hooks/useApplicationData_Reducer";
 
 export default function Application() {
   const { state, setDay, bookInterview, cancelInterview } = useApplicationData();
