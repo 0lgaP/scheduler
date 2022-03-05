@@ -89,7 +89,7 @@ export default function Appointment(props) {
       {mode === ERROR_DELETE && (<Error message="Error while deleting your interview" onClose={()=>transition(SHOW)}/>)}
       {mode === SAVING && (<Status message="Saving"/>)}
       {mode === DELETE && (<Status message="Deleting"/>)}
-      {mode === CONFIRM && ( <Confirm message="You sure hun?" onConfirm={destroy} onCancel={() => back()}/>)}
+      {mode === CONFIRM && ( <Confirm message="You sure hun?" onConfirm={destroy} onCancel={back}/>)}
     </article>
   );
 }
