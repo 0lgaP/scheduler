@@ -1,25 +1,24 @@
-import {useState} from 'react';
+import { useState } from "react";
 
-export default function useVisualMode(firstMode){
+export default function useVisualMode(firstMode) {
   const [mode, setMode] = useState(firstMode);
-  const [history, setHistory] = useState([firstMode]); 
+  const [history, setHistory] = useState([firstMode]);
 
   const transition = (newMode, replace = false) => {
     //set mode to variable
     setMode(newMode);
     //add mode to history array
-    if(replace){
-      setHistory((prev) => [ ...prev.slice(0, -1), newMode])
+    if (replace) {
+      setHistory((prev) => [...prev.slice(0, -1), newMode]);
     } else {
       setHistory((prev) => [...prev, newMode]);
     }
   };
-  
 
   const back = () => {
     if (history.length > 1) {
-      //set mode to the length of the array 
-      //-1 because array starts at 0, 
+      //set mode to the length of the array
+      //-1 because array starts at 0,
       //-1 because we want to set it to the previous value in array
       setMode(history[history.length - 2]);
       //slice(start, end)
@@ -28,6 +27,5 @@ export default function useVisualMode(firstMode){
     }
   };
 
-  return {transition, back, mode};
-  
+  return { transition, back, mode };
 }

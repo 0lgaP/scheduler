@@ -9,7 +9,6 @@ import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
 
-
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -23,37 +22,32 @@ const ERROR_DELETE = "ERROR_DELETE";
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
-    );
+  );
 
-  function save(name, interviewer){
-
+  function save(name, interviewer) {
     const id = props.id;
     const interview = {
       student: name,
-      interviewer
+      interviewer,
     };
 
     transition(SAVING);
 
     Promise.resolve(props.bookInterview(id, interview))
-    .then(() => {
-      transition(SHOW)
-    })
-    .catch(() => {
-      transition(ERROR_SAVE, true);
-      
-    })
-
+      .then(() => {
+        transition(SHOW);
+      })
+      .catch(() => {
+        transition(ERROR_SAVE, true);
+      });
   }
 
-  function destroy(){
-    
+  function destroy() {
     transition(DELETE, true);
-    
+
     Promise.resolve(props.cancelInterview(props.id))
-    .then(()=> transition(EMPTY))
-    .catch(() => transition(ERROR_DELETE, true))
-    
+      .then(() => transition(EMPTY))
+      .catch(() => transition(ERROR_DELETE, true));
   }
 
   return (
@@ -81,15 +75,29 @@ export default function Appointment(props) {
           id={props.id}
           student={props.interview.student}
           interviewer={props.interview.interviewer.name}
-          onDelete={()=>transition(CONFIRM)}
-          onEdit={()=>transition(EDIT)}
+          onDelete={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
         />
       )}
-      {mode === ERROR_SAVE && (<Error message="Error while saving your changes"  onClose={()=> props.interview? transition(SHOW) : transition(EMPTY)}/>)}
-      {mode === ERROR_DELETE && (<Error message="Error while deleting your interview" onClose={()=>transition(SHOW)}/>)}
-      {mode === SAVING && (<Status message="Saving"/>)}
-      {mode === DELETE && (<Status message="Deleting"/>)}
-      {mode === CONFIRM && ( <Confirm message="You sure hun?" onConfirm={destroy} onCancel={back}/>)}
+      {mode === ERROR_SAVE && (
+        <Error
+          message="Error while saving your changes"
+          onClose={() =>
+            props.interview ? transition(SHOW) : transition(EMPTY)
+          }
+        />
+      )}
+      {mode === ERROR_DELETE && (
+        <Error
+          message="Error while deleting your interview"
+          onClose={() => transition(SHOW)}
+        />
+      )}
+      {mode === SAVING && <Status message="Saving" />}
+      {mode === DELETE && <Status message="Deleting" />}
+      {mode === CONFIRM && (
+        <Confirm message="You sure hun?" onConfirm={destroy} onCancel={back} />
+      )}
     </article>
   );
 }

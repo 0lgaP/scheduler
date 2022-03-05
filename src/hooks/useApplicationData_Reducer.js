@@ -70,7 +70,7 @@ export default function useApplicationData() {
       axios.put(`/api/appointments/${id}`, { interview })
     ).then(() => {
       let days;
-      if(state.appointments[id].interview){
+      if (state.appointments[id].interview) {
         days = state.days;
       } else {
         days = updateSpots("book");
@@ -103,6 +103,5 @@ export default function useApplicationData() {
   }, []);
 
   //return all components
-
   return { state, setDay, bookInterview, cancelInterview };
 }
