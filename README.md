@@ -1,9 +1,10 @@
 # Interview Scheduler
+
+![scheduler1](https://user-images.githubusercontent.com/61428425/211402545-77f094eb-6d2c-42ea-873c-073ddfce4842.gif)
+
 Interview Scheduler is a single-page, React application. This userfriendly app allows you to create, edit or delete interview. The information is stored in the database and persists after reload.
 
-## Add, Edit, Delete and be sure the app is working while you wait
 
-![Gif of scheduler functionality](https://raw.githubusercontent.com/0lgaP/scheduler/master/public/images/scheduler__.gif)
 ## Setup
 
 [Clone Scheduler](https://github.com/0lgaP/scheduler) <br>
